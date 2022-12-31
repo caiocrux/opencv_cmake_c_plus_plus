@@ -27,6 +27,10 @@
 
 using namespace cv;
 
+/**
+ * @brief Print the classic Hello World.
+ *
+ */
 void print_hello_world(void) 
 {
     std::cout << "Hello World"<< std::endl;
