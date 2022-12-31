@@ -6,6 +6,7 @@
 # 5.) ./Executable
 # 6.) cmake --build . --target my_lib
 # 7.) cmake --build . --target bin
+# 8.) cmake --build . --target docs
 
 
 cmake_minimum_required(VERSION 3.22)
@@ -23,8 +24,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 #add  opencv dependency  with FetContent
-include (FetchContent)
-
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
+include(FetchContent)
+include(Docs)
 FetchContent_Declare(
     opencv
     GIT_REPOSITORY https://github.com/opencv/opencv.git
@@ -35,7 +37,7 @@ FetchContent_MakeAvailable(opencv)
 
 # Find on pc
 set(OpenCV_DIR ${CMAKE_CURRENT_BINARY_DIR})
-include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${OpenCV_DIR})
 find_package(OpenCV REQUIRED)
 
 # first build the lib and than the app
