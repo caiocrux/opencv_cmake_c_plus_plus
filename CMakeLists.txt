@@ -7,6 +7,7 @@
 # 6.) cmake --build . --target my_lib
 # 7.) cmake --build . --target bin
 # 8.) cmake --build . --target docs
+# 9.) cmake --build . --target unit_tests
 
 
 cmake_minimum_required(VERSION 3.22)
@@ -34,13 +35,21 @@ FetchContent_Declare(
     GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(opencv)
-
 # Find on pc
 set(OpenCV_DIR ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${OpenCV_DIR})
 find_package(OpenCV REQUIRED)
 
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2
+    GIT_TAG v2.13.9
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(Catch2)
+
 # first build the lib and than the app
 add_subdirectory(lib)
 add_subdirectory(app)
 add_subdirectory(configured)
+add_subdirectory(tests)

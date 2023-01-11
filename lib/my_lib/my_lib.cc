@@ -52,3 +52,7 @@ void open_image(char *argv) {
     imshow("Display Image", image);
     waitKey(0);
 }
+std::uint32_t factorial( uint32_t number ) {
+    return number <= 1 ? 1 : factorial(number-1) * number;
+}
+

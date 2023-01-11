@@ -21,9 +21,10 @@
  * 
  */
 #pragma once
+#include <cstdint>
 
 void print_hello_world(void);
 void print_lib_version(void);
 void open_image(char *argv);
-
+std::uint32_t factorial(uint32_t number);
 

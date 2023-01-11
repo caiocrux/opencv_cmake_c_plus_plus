@@ -27,6 +27,8 @@
 
 int main(int argc, char **argv)
 {
+    int fac = 5;
+    printf("Factorial of %d is %d\r\n", 5, factorial(fac));
     if ( argc != 2 ) {
         printf("usage: DisplayImage.out <Image_Path>\n");
         return -1;
