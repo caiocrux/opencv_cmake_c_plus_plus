@@ -84,8 +84,7 @@ include/divisible/*
 build/**/*
 
 include/*
-lib/*
-bin/*
+in/*
 test/test_runner
 # Compiled Object files
 **/.DS_Store
