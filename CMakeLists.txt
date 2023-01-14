@@ -24,10 +24,15 @@ set(CMAKE_CXX_STANDARD          17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
-#add  opencv dependency  with FetContent
+# Options
+option(ENABLE_WARNING "Enable to add warning to a target" ON)
+option(ENABLE_WARNING_AS_ERRORS "Enable to add warning to a target as errors" OFF)
+
+#add  opencv dependency with FetContent
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(FetchContent)
 include(Docs)
+include(Warnings)
 FetchContent_Declare(
     opencv
     GIT_REPOSITORY https://github.com/opencv/opencv.git
