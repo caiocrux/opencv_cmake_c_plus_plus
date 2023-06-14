@@ -27,6 +27,7 @@ set(CMAKE_CXX_EXTENSIONS        OFF)
 # Options
 option(ENABLE_WARNING "Enable to add warning to a target" ON)
 option(ENABLE_WARNING_AS_ERRORS "Enable to add warning to a target as errors" OFF)
+option(ENABLE_DEBUG_SYMBOLS "Enable Debug Symbols to use with gdb" ON)
 
 #add  opencv dependency with FetContent
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
@@ -39,7 +40,7 @@ FetchContent_Declare(
     GIT_TAG        4.7.0
     GIT_SHALLOW TRUE
 )
-FetchContent_MakeAvailable(opencv)
+#FetchContent_MakeAvailable(opencv)
 # Find on pc
 set(OpenCV_DIR ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${OpenCV_DIR})
@@ -52,6 +53,11 @@ FetchContent_Declare(
     GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(Catch2)
+
+if(ENABLE_DEBUG_SYMBOLS)
+    include(Debug)
+    append_coverage_compiler_flags()
+endif()
 
 # first build the lib and than the app
 add_subdirectory(lib)
